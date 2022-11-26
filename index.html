@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leaflet JS Online Map</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    </head>
+
+    <style>
+        #map {height: 600px; width: 1350px }
+    </style>
+
+    <body>
+        <div id="map"></div>
+    </body>
+
+    <script>
+        var map_center = [45.65021672983043, 63.30521666347385];
+        var mapOptions = {
+        center: map_center,
+        zoom: 2.3
+        }
+        var map = L.map('map', mapOptions);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 15,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // Places
+        //Maldives
+        maldives_latlong = [-0.6125576549891659, 73.09403631692042];
+        maldives_marker = L.circle(maldives_latlong, {radius: 200000, color: 'blue'}).addTo(map);
+
+        //Auckland, New Zealand
+        auckland_latlong = [-36.820022999117086, 174.76902327363194];
+        auckland_circle = L.circle(auckland_latlong, {radius: 200000, color: 'blue'}).addTo(map);
+
+        //Russia
+        russia_latlong = [66.2991880676349, 102.63609283230899];
+        russia_circle = L.circle(russia_latlong, {radius: 1000000, color: 'red'}).addTo(map);
+
+        //Switzerland
+        switzerland_latlong = [46.84154450740601, 7.11629115485516];
+        switzerland_circle = L.marker(switzerland_latlong).addTo(map);
+
+        //Dubai, UAE
+        dubai_latlong = [25.22700094739933, 55.24294395635795];
+        dubai_marker = L.marker(dubai_latlong).addTo(map);
+
+        //Tokyo, Japan
+        tokyo_latlong = [35.79820191017661, 139.72005912707317];
+        tokyo_marker = L.marker(tokyo_latlong).addTo(map);
+
+        //Mount Everest, Nepal
+        everest_latlong = [27.988006184233722, 86.92441715712577];
+        everest_marker = L.marker(everest_latlong).addTo(map);
+
+        //Cape Town, South Africa
+        cape_latlong = [-33.93219068018906, 18.431815273443952];
+        cape_marker = L.marker(cape_latlong).addTo(map);
+
+        var polyline_latlngs = [
+            [
+            //South Korea
+            [37.57391079496585, 126.99101577176611],
+            [36.09532886604931, 129.35449128479704],
+            [35.93765765987149, 128.59677879789172],
+            [35.280816562935904, 129.04346791473156],
+            [35.181462111857186, 126.87264115922127],
+            [36.432988573537116, 127.35770197403359],
+            [37.41565278869316, 126.67446529748234],
+            [37.57391079496585, 126.99101577176611],
+            ],
+            [
+            //USA
+            [34.00764212011928, -118.49960949189378],
+            [36.16980507406856, -115.13942566032188],
+            [34.0795691443197, -106.02608340573539],
+            [35.51773350453225, -97.52316634322993],
+            [42.0175141243865, -93.53070464537998],
+            [41.92431291785718, -87.63402731606506],
+            [40.00126988362024, -82.98121344590298],
+            [39.01862862800784, -76.96928876397615],
+            [40.72295337534495, -74.01296919743113],
+            ]
+        ];
+        polyline = L.polyline(polyline_latlngs, {color: 'red'}).addTo(map);
+
+    </script>
+</html>
